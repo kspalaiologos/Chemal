@@ -20,7 +20,7 @@
 			}
 			
 			if(this.getCoefficient() > 1) {
-				s += ")<sub>" + this.getCoefficient() + "</sub>";
+				s += ")<font size=\"16\">" + this.getCoefficient() + "</font>";
 			}
 			
 			return s;
