@@ -8,7 +8,7 @@
 			this.subUnits.push(subUnit);
 		}
 		
-		public override function getHtml():String {
+		public function getHtml():String {
 			var s:String = "";
 			
 			if(this.getCoefficient() > 1) {
@@ -26,20 +26,20 @@
 			return s;
 		}
 		
-		public override function setCoefficent(coefficent:int):void {
+		public function setCoefficient(coefficent:int):void {
 			this.coefficent = coefficent;
 		}
 		
-		public override function getCoefficent():int {
+		public function getCoefficient():int {
 			return this.coefficent;
 		}
 		
-		public override function getElementCount(symbol:String):void {
+		public function getElementCount(symbol:String):int {
 			var count:int = 0;
 			for each(var unit:Unit in this.subUnits) {
 				count += unit.getElementCount(symbol);
 			}
-			count *= this.getCoefficent();
+			count *= this.getCoefficient();
 			return count;
 		}
 
