@@ -30,10 +30,10 @@
 		
 		public function getHtml():String {
 			if(this.coefficent > 1) {
-				return this.symbol + "<font size=\"16\">" + this.getCoefficient() + "</font>";
+				return "<b>" + this.symbol + "</b>" + "<font size=\"16\">" + this.getCoefficient() + "</font>";
 			}
 			
-			return this.symbol;
+			return "<b>" + this.symbol + "</b>";
 		}
 		
 		public function getElementCount(symbol:String):int {
