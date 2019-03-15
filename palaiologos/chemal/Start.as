@@ -20,6 +20,8 @@
 			inputFormat.size = 20;
 			inputFormat.color = 0x0000000;
 			
+			this.equationInput.setStyle("textFormat", inputFormat);
+			
 			trace("Running!");
 		}
 	}
