@@ -20,32 +20,6 @@
 		private var system:Array; /* double[][] */
 		private var variables:Array; /* double[] */
 
-		private function balanceClick(e:ComponentEvent):void {
-			parseEquationString(this.equationInput.text);
-			displayUnbalancedEquation();
-			
-			createEquationsSystem();
-			printSystem();
-			
-			solveEquations();
-			
-			if(solveVariables()){
-				displayBalancedEquation();
-			} else {
-				trace("Invalid equation: Cannot solve with positive integers");
-			}
-		}
-
-		public function Chemal(equationInput:TextInput, equationOutput:TextArea, equationButton:Button) {
-			this.equationInput = equationInput;
-			this.equationOutput = equationOutput;
-			this.equationButton = equationButton;
-			
-			equationInput.text = "P2I4 + P4 + H2O + K = PH4I + K(H3PO4)2";
-			
-			equationButton.addEventListener(ComponentEvent.BUTTON_DOWN, balanceClick);
-		}
-		
 		private function displayUnbalancedEquation():void {
 			var equation:String = "";
 			
@@ -260,7 +234,7 @@
 			}
 		}
 		
-		private function solveBooleans():Boolean {
+		private function solveVariables():Boolean {
 			variables = new Array(system[0].length - 1);
 			var defaultValue:int = 1;
 			
@@ -287,6 +261,32 @@
 			}
 			
 			return true;
+		}
+		
+		private function balanceClick(e:ComponentEvent):void {
+			parseEquationString(this.equationInput.text);
+			displayUnbalancedEquation();
+			
+			createEquationsSystem();
+			printSystem();
+			
+			solveEquations();
+			
+			if(solveVariables()){
+				displayBalancedEquation();
+			} else {
+				trace("Invalid equation: Cannot solve with positive integers");
+			}
+		}
+
+		public function Chemal(equationInput:TextInput, equationOutput:TextArea, equationButton:Button) {
+			this.equationInput = equationInput;
+			this.equationOutput = equationOutput;
+			this.equationButton = equationButton;
+			
+			equationInput.text = "P2I4 + P4 + H2O + K = PH4I + K(H3PO4)2";
+			
+			equationButton.addEventListener(ComponentEvent.BUTTON_DOWN, balanceClick);
 		}
 	}
 	
