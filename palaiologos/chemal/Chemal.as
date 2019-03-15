@@ -46,17 +46,13 @@
 		
 		private function displayBalancedEquation():void {
 			var variableNumber:int = 0;
+            
 			var equation:String = "";
 			var i:int = 0;
 			
-			var numFormat:NumberFormatter = new NumberFormatter(LocaleID.DEFAULT);
-			numFormat.leadingZero = true;
-			numFormat.trailingZeros = true;
-			numFormat.fractionalDigits = 7;
-			
 			for(; i < reactants.length; i++) {
 				if(variables[variableNumber] != 1) {
-					equation += numFormat.formatNumber(variables[variableNumber]);
+					equation += variables[variableNumber];
 				}
 				
 				variableNumber++;
@@ -72,7 +68,7 @@
 			
 			for(i = 0; i < products.length; i++) {
 				if(variables[variableNumber] != 1) {
-					equation += numFormat.formatNumber(variables[variableNumber]);
+					equation += variables[variableNumber];
 				}
 				
 				variableNumber++;
@@ -84,7 +80,7 @@
 				}
 			}
 			
-			this.equationOutput.htmlText = equation;
+			this.equationOutput.text = equation;
 		}
 		
 		private function parseEquationString(equationString:String):void {
@@ -113,7 +109,6 @@
 			
 			while(i < s.length) {
 				trace("s.charAt(i) = " + s.charAt(i));
-				
 				if(s.charAt(i).toUpperCase() == s.charAt(i)) {
 					var elementName:String = s.charAt(i);
 					i++;
@@ -147,19 +142,19 @@
 					var end:int = s.lastIndexOf(")");
 					var subCompound:Compound = parseCompoundString(s.substring(i + 1, end));
 					i = end + 1;
-					var stringCoefficent:String = "";
+					var stringCoefficent2:String = "";
 					while(i < s.length && !isNaN(new Number(s.charAt(i)))) {
-						stringCoefficent += s.charAt(i);
+						stringCoefficent2 += s.charAt(i);
 						i++;
 					}
-					var coefficent:int = 1;
-					if(stringCoefficent.length > 0) {
-						coefficent = new Number(stringCoefficent);
-						if(isNaN(coefficent)) {
+					var coefficent2:int = 1;
+					if(stringCoefficent2.length > 0) {
+						coefficent2 = new Number(stringCoefficent2);
+						if(isNaN(coefficent2)) {
 							trace("!!! coefficent=nan");
 						}
 					}
-					subCompound.setCoefficient(coefficent);
+					subCompound.setCoefficient(coefficent2);
 					compound.addSubUnit(subCompound);
 				}
 			}
@@ -193,7 +188,7 @@
 		private function solveEquations():void {
 			trace("Part 1:");
 			for(var i:int = 0; i < system.length && i < system[0].length - 1; i++) {
-				if(system[i][j] == 0) {
+				if(system[i][i] == 0) {
 					var found:Boolean = false;
 					for(var j:int = i + 1; j < system.length; j++) {
 						if(system[j][i] != 0) {
@@ -213,11 +208,11 @@
 					var n:Number = system[i2][i];
 					if(n == 0)
 						continue;
-					for(var j:int = 0; j < system[i2].length; j++) {
-						system[i2][j] *= system[i][i];
+					for(var j2:int = 0; j2 < system[i2].length; j2++) {
+						system[i2][j2] *= system[i][i];
 					}
-					for(var j:int = 0; j < system[0].length; j++) {
-						system[i2][j] -= system[i][j] * n;
+					for(var j3:int = 0; j3 < system[0].length; j3++) {
+						system[i2][j3] -= system[i][j3] * n;
 					}
 				}
 				
