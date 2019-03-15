@@ -13,9 +13,9 @@
 		private var equationOutput:TextArea;
 		private var equationButton:Button;
 		
-		private var reactants:Array;
-		private var products:Array;
-		private var elementNames:Array;
+		private var reactants:Array = new Array();
+		private var products:Array = new Array();
+		private var elementNames:Array = new Array();
 		
 		private var system:Array; /* double[][] */
 		private var variables:Array; /* double[] */
@@ -99,9 +99,9 @@
 				
 				for each(var str:String in mols) {
 					if(i == 0)
-						reactants.add(parseCompoundString(str));
+						reactants.push(parseCompoundString(str));
 					else
-						products.add(parseCompoundString(str));
+						products.push(parseCompoundString(str));
 				}
 			}
 		}
@@ -141,7 +141,7 @@
 					
 					compound.addSubUnit(new Element(elementName, coefficent));
 					if(elementNames.indexOf(elementName) < 0) {
-						elementNames.add(elementName);
+						elementNames.push(elementName);
 					}
 				} else if(s.charAt(i) == '(') {
 					var end:int = s.lastIndexOf(")");
