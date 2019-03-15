@@ -30,7 +30,7 @@
 		
 		public function getHtml():String {
 			if(this.coefficent > 1) {
-				return this.symbol + "<sub>" + this.getCoefficient() + "</sub>";
+				return this.symbol + "<font size=\"16\">" + this.getCoefficient() + "</font>";
 			}
 			
 			return this.symbol;
