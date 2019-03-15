@@ -3,6 +3,7 @@
 	import fl.controls.TextInput;
 	import fl.controls.TextArea;
 	import flash.text.TextFormat;
+	import palaiologos.chemal.ui.ToolTip;
 
 	public class Start {
 		private var equationInput:TextInput;
@@ -21,6 +22,9 @@
 			inputFormat.color = 0x0000000;
 			
 			this.equationInput.setStyle("textFormat", inputFormat);
+			
+			ToolTip.subscribe(this.equationInput, "Wpisz niewyrownana reakcje tutaj.");
+			ToolTip.subscribe(this.equationOutput, "Wyrownana wersja reakcji pojawi sie tutaj");
 			
 			trace("Running!");
 		}
