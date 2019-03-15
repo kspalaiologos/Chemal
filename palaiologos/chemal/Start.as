@@ -6,6 +6,7 @@
 	import flash.text.TextFormat;
 	import palaiologos.chemal.ui.ToolTip;
 	import palaiologos.chemal.ui.DefaultFormatFactory;
+	import flash.events.MouseEvent;
 
 	public class Start {
 		private var equationInput:TextInput;
@@ -29,6 +30,8 @@
 			ToolTip.subscribe(this.equationInput, "Wpisz niewyrownana reakcje tutaj.");
 			ToolTip.subscribe(this.equationOutput, "Wyrownana wersja reakcji pojawi sie tutaj.");
 			ToolTip.subscribe(this.confirmButton, "Wyrownaj reakcje.");
+			
+			this.confirmButton.dispatchEvent(new MouseEvent(MouseEvent.MOUSE_OVER));
 			
 			new Chemal(this.equationInput, this.equationOutput, this.confirmButton);
 		}
