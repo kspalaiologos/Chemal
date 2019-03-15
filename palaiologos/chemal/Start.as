@@ -30,7 +30,7 @@
 			ToolTip.subscribe(this.equationOutput, "Wyrownana wersja reakcji pojawi sie tutaj.");
 			ToolTip.subscribe(this.confirmButton, "Wyrownaj reakcje.");
 			
-			trace("Running!");
+			new Chemal(this.equationInput, this.equationOutput, this.confirmButton);
 		}
 	}
 }
