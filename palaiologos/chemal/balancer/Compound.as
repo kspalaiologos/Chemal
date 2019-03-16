@@ -1,4 +1,4 @@
-﻿package palaiologos.chemal {
+﻿package palaiologos.chemal.balancer {
 	public class Compound implements Unit {
 
 		private var coefficent:int = 1;

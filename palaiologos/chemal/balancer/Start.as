@@ -1,4 +1,4 @@
-﻿package palaiologos.chemal {
+﻿package palaiologos.chemal.balancer {
 	import flash.display.MovieClip;
 	import fl.controls.TextInput;
 	import fl.controls.TextArea;
