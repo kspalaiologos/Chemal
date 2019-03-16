@@ -28,8 +28,8 @@
 		}
 		
 		public function run():void {
-			this.equationInput.setStyle("textFormat", this.textFormatFactory.nextFormat());
-			this.equationOutput.setStyle("textFormat", this.textFormatFactory.nextFormat());
+			textStyleSubscriber.apply(this.equationInput);
+			textStyleSubscriber.apply(this.equationOutput);
 			
 			ToolTip.subscribe(this.equationInput, "Wpisz niewyrownana reakcje tutaj.");
 			ToolTip.subscribe(this.equationOutput, "Wyrownana wersja reakcji pojawi sie tutaj.");
