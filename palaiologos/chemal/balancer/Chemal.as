@@ -2,8 +2,6 @@
 	import fl.controls.TextInput;
 	import fl.controls.TextArea;
 	import fl.controls.Button;
-	import flash.globalization.NumberFormatter;
-	import flash.globalization.LocaleID;
 	import fl.events.ComponentEvent;
 	import flash.events.Event;
 	
