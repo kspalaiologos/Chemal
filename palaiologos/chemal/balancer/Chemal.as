@@ -1,4 +1,4 @@
-﻿package palaiologos.chemal {
+﻿package palaiologos.chemal.balancer {
 	import fl.controls.TextInput;
 	import fl.controls.TextArea;
 	import fl.controls.Button;

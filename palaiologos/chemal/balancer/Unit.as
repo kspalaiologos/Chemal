@@ -1,4 +1,4 @@
-﻿package palaiologos.chemal {
+﻿package palaiologos.chemal.balancer {
 	public interface Unit {
 		function setCoefficient(coefficient:int):void;
     	function getCoefficient():int;
