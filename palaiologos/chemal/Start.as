@@ -7,13 +7,16 @@
 	import palaiologos.chemal.ui.ToolTip;
 	import palaiologos.chemal.ui.DefaultFormatFactory;
 	import flash.events.MouseEvent;
+	import palaiologos.chemal.ui.TextStyleSubscriber;
+	import palaiologos.chemal.ui.FormatFactory;
 
 	public class Start {
 		private var equationInput:TextInput;
 		private var equationOutput:TextArea;
 		private var confirmButton:Button;
 		
-		private var textFormatFactory:DefaultFormatFactory;
+		private var textFormatFactory:FormatFactory;
+		private var textStyleSubscriber:TextStyleSubscriber;
 		
 		public function Start(parent:MovieClip) {
 			this.equationInput = parent.EquationInput;
@@ -21,6 +24,7 @@
 			this.confirmButton = parent.ConfirmButton;
 			
 			this.textFormatFactory = new DefaultFormatFactory();
+			this.textStyleSubscriber = new TextStyleSubscriber(this.textFormatFactory);
 		}
 		
 		public function run():void {
