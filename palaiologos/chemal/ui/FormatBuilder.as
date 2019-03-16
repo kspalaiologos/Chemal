@@ -1,7 +1,7 @@
 ﻿package palaiologos.chemal.ui {
 	import flash.text.TextFormat;
 
-	public class FormatBuilder {
+	public class FormatBuilder implements FormatFactory {
 		protected var font:String;
 		protected var size:int;
 		protected var color:int;

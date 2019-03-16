@@ -8,15 +8,6 @@
 	import flash.filters.DropShadowFilter;
 
 	public class ToolTip extends Sprite {
-
-		public static const SHADOW_NONE:int = 0;
-		public static const SHADOW_HOLLOW:int = 1;
-		public static const SHADOW_FULL:int = 2;
-		public static const COLOR_TEXT:int = -1;
-		public static const COLOR_NONE:int = -2;
-		public static const MARGIN:String = "margin";
-		public static const STAGE_RECT:Object = { };
-		
 		private static var instance:ToolTip;
 		private static var allowInstantiation:Boolean = false;
 		private static var delayTimer:Timer;
@@ -33,7 +24,7 @@
 		
 		public function ToolTip() {	
 			if (!allowInstantiation) {
-				throw(new Error("palaiologos.chemal.ui.TollTip"));
+				throw(new Error("palaiologos.chemal.ui.TollTip: Class is a singleton."));
 				return;
 			}
 			keys = new Dictionary(true);
@@ -44,15 +35,15 @@
 				alpha:.8,
 				corner:10,
 				margin:4,
-				marginLeft:ToolTip.MARGIN,
-				marginRight:ToolTip.MARGIN,
-				marginTop:ToolTip.MARGIN,
-				marginBottom:ToolTip.MARGIN,
+				marginLeft:ToolTipSettings.MARGIN,
+				marginRight:ToolTipSettings.MARGIN,
+				marginTop:ToolTipSettings.MARGIN,
+				marginBottom:ToolTipSettings.MARGIN,
 				color:"#8b0000",
 				backgroundColor:0xFFFFDD,
-				shadowColor:ToolTip.COLOR_TEXT,				
-				shadowType: ToolTip.SHADOW_HOLLOW,				
-				lineColor:ToolTip.COLOR_TEXT,
+				shadowColor:ToolTipSettings.COLOR_TEXT,				
+				shadowType: ToolTipSettings.SHADOW_HOLLOW,				
+				lineColor:ToolTipSettings.COLOR_TEXT,
 				customBackground:null,
 				styleSheet:null,
 				fontFamily:"Verdana,Helvetica,_sans",				
@@ -67,7 +58,7 @@
 				offsetY:25,
 				fixedPosition:false,
 				fixedWidth:false,
-				boundingRect:ToolTip.STAGE_RECT
+				boundingRect:ToolTipSettings.STAGE_RECT
 			};
 			resetDefaultOptions();
 			mouseEnabled = false;
@@ -276,7 +267,7 @@
 			tipText.wordWrap = true;
 			var ar:Array = ["marginRight", "marginLeft", "marginTop", "marginBottom"];
 			for each (var m:String in ar) {
-				if (options[m] == ToolTip.MARGIN) {
+				if (options[m] == ToolTipSettings.MARGIN) {
 					options[m] = options.margin;
 				}
 			}
@@ -305,7 +296,7 @@
 								options.fontFamily = family;							
 								return;
 							}
-					}					
+					}
 				}
 				tipText.embedFonts = false;
 			}
@@ -355,11 +346,11 @@
 		}
 
 		protected function drawBackground():void {
-			if (options.lineColor == ToolTip.COLOR_TEXT) {
+			if (options.lineColor == ToolTipSettings.COLOR_TEXT) {
 				options.lineColor = options.color;
 			}
 			
-			if (options.shadowColor == ToolTip.COLOR_TEXT) {
+			if (options.shadowColor == ToolTipSettings.COLOR_TEXT) {
 				options.shadowColor = options.color;
 			}
 			
@@ -367,25 +358,25 @@
 				background = new Sprite();
 				var rect:Shape = new Shape();
 				rect.graphics.beginFill(options.backgroundColor, options.alpha);
-				if (options.lineColor != ToolTip.COLOR_NONE){
+				if (options.lineColor != ToolTipSettings.COLOR_NONE){
 					rect.graphics.lineStyle(1, options.lineColor, options.alpha, true  );
 				}
 				rect.graphics.drawRoundRect(0, 0, tipWidth, tipHeight, options.corner, options.corner);
-				if (options.shadowType != ToolTip.SHADOW_NONE && options.shadowColor != ToolTip.COLOR_NONE){
+				if (options.shadowType != ToolTipSettings.SHADOW_NONE && options.shadowColor != ToolTipSettings.COLOR_NONE){
 					var myFilter:DropShadowFilter = new DropShadowFilter ();
 					myFilter.quality = 2;
 					myFilter.alpha = options.alpha ;
 					myFilter.distance = 2;
 					myFilter.knockout = true;
 					myFilter.color = options.shadowColor;
-					if (options.shadowType == ToolTip.SHADOW_HOLLOW){
+					if (options.shadowType == ToolTipSettings.SHADOW_HOLLOW){
 						var shadow:Sprite = new Sprite();	
 						shadow.graphics.beginFill(0x000000);
 						shadow.graphics.drawRoundRect(0, 0, tipWidth, tipHeight, options.corner, options.corner);
 						myFilter.knockout = true;
 						shadow.filters = [myFilter];
 						background.addChild(shadow);			
-					} else if (options.shadowType == ToolTip.SHADOW_FULL) {
+					} else if (options.shadowType == ToolTipSettings.SHADOW_FULL) {
 						rect.filters = [myFilter];
 					}
 				}
@@ -406,7 +397,7 @@
 			var hmin:Number;
 			var hmax:Number;
 			
-			if (options.boundingRect == ToolTip.STAGE_RECT) {
+			if (options.boundingRect == ToolTipSettings.STAGE_RECT) {
 				wmin = 0
 				wmax = stage.stageWidth;
 				hmin = 0
